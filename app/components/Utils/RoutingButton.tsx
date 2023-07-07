@@ -1,7 +1,7 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/Input/Button/Button";
-import useQuestionsStore from "@/stores/useQuestionsStore";
+import useQuestionsStore from "stores/useQuestionsStore";
 
 type Direction = "back" | "forward" | "home" | "start";
 

@@ -1,25 +1,16 @@
 "use client";
 
 import RoutingButton from "@/components/Utils/RoutingButton";
-import useQuestionsStore from "@/stores/useQuestionsStore";
+import { useParams } from "next/navigation";
 
-export const Quiz = ({ params }: { params: { id: string } }) => {
-  const id = params.id;
-
-  const { getQuestionId, getCurrentQuestion } = useQuestionsStore();
-  const questionId = getQuestionId(id);
-  const currentQuestion = getCurrentQuestion(id);
-
-  const { question } = currentQuestion;
-
-  console.log(questionId);
+export const Quiz = () => {
+  const { id } = useParams();
   return (
     <>
       <h2>
-        {question}
+        Question
         {id}
       </h2>
-      <div>{question}</div>
       <RoutingButton direction="back" />
       {+id < 4 && <RoutingButton direction="forward" id={id} />}
       <RoutingButton direction="home" />
