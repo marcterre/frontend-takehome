@@ -1,5 +1,5 @@
 "use client";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/Input/Button/Button";
 import useQuestionsStore from "@/stores/useQuestionsStore";
 
@@ -7,16 +7,21 @@ type Direction = "back" | "forward" | "home" | "start";
 
 type RoutingButtonProps = {
   direction: Direction;
-  route?: string;
   id?: string;
+  input?: string;
 };
 
 export const RoutingButton = (props: RoutingButtonProps) => {
-  const { direction, route, id } = props;
+  const { direction, id, input } = props;
   const router = useRouter();
 
-  const handleRouting = (direction: Direction, route?: string) => {
+  const { setAnswer, quiz } = useQuestionsStore();
+  const answer = quiz[0].answer;
+  console.log("answer", answer);
+
+  const handleRouting = (direction: Direction, input?: string) => {
     if (direction === "forward") {
+      setAnswer(id ? id : "", input ? input : "");
       return router.push(`/quiz/${id && +id + 1}`);
     }
     if (direction === "back") {
@@ -48,7 +53,7 @@ export const RoutingButton = (props: RoutingButtonProps) => {
   return (
     <Button
       label={label()}
-      handleClick={() => handleRouting(direction, route)}
+      handleClick={() => handleRouting(direction, input)}
       variant={label()}
     />
   );
