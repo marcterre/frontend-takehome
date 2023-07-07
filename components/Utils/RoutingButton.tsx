@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/Input/Button/Button";
-import useQuestionsStore from "@/stores/useQuestionsStore";
+import { Button } from "components/Input/Button/Button";
+import useQuestionsStore from "stores/useQuestionsStore";
 
 type Direction = "back" | "forward" | "home" | "start";
 
@@ -15,8 +15,8 @@ export const RoutingButton = (props: RoutingButtonProps) => {
   const { direction, id, input } = props;
   const router = useRouter();
 
-  const { setAnswer, quiz } = useQuestionsStore();
-  const answer = quiz[0].answer;
+  const { setAnswer, questions } = useQuestionsStore();
+  const answer = questions[0].answer;
   console.log("answer", answer);
 
   const handleRouting = (direction: Direction, input?: string) => {

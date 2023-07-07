@@ -1,4 +1,4 @@
-import RoutingButton from "./components/Utils/RoutingButton";
+import RoutingButton from "../components/Utils/RoutingButton";
 import styles from "./page.module.css";
 
 export const Home = () => {
