@@ -1,9 +1,9 @@
-import { FavoriteFruitQuestion } from "@/app/quiz/partials";
-import { LastTimeMuffinQuestion } from "@/app/quiz/partials";
-import { LikeToBakeQuestion } from "@/app/quiz/partials";
-import { MuffinLikeabilityQuestion } from "@/app/quiz/partials";
-import { PreferredColorQuestion } from "@/app/quiz/partials";
-import { WhyMuffinsQuestion } from "@/app/quiz/partials";
+import { FavoriteFruitQuestion } from "@/views/quiz/partials";
+import { LastTimeMuffinQuestion } from "@/views/quiz/partials";
+import { LikeToBakeQuestion } from "@/views/quiz/partials";
+import { MuffinLikeabilityQuestion } from "@/views/quiz/partials";
+import { PreferredColorQuestion } from "@/views/quiz/partials";
+import { WhyMuffinsQuestion } from "@/views/quiz/partials";
 import { create } from "zustand";
 
 type Quiz = {
