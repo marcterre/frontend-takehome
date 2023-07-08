@@ -9,7 +9,7 @@ export const handleQuizPath = (dateAnswer?: string, numberAnswer?: string) => {
 
   if (
     (numberIsLessThan5 && dateIsNotWithin30Days) ||
-    (numberIsLessThan5 && !dateAnswer)
+    (numberIsLessThan5 && !dateIsNotWithin30Days)
   ) {
     return false;
   } else {

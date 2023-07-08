@@ -1,14 +1,15 @@
+"use client";
 import { Button } from "@/components";
 import useQuestionsStore from "@/stores/useQuestionsStore";
 import { useState } from "react";
 
 type SelectorButtonProps = {
-  selectorValues: string[];
+  optionsValue: { label: string; value: string }[];
   id: string;
 };
 
 export const SelectorButton = (props: SelectorButtonProps) => {
-  const { selectorValues, id } = props;
+  const { optionsValue, id } = props;
   const [selectedValue, setSelectedValue] = useState("");
   const { setAnswer } = useQuestionsStore();
 
@@ -18,15 +19,18 @@ export const SelectorButton = (props: SelectorButtonProps) => {
   };
   return (
     <>
-      {selectorValues.map((value, index) => (
-        <Button
-          key={index}
-          label={value}
-          handleClick={() => handleColorSelection(value)}
-          active={value === selectedValue}
-        />
-      ))}
-      ;
+      {optionsValue.map((options, index) => {
+        const { label, value } = options;
+        return (
+          <Button
+            key={index}
+            label={label}
+            handleClick={() => handleColorSelection(value)}
+            active={value === selectedValue}
+            type="button"
+          />
+        );
+      })}
     </>
   );
 };
