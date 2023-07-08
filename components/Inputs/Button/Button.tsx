@@ -5,12 +5,17 @@ type ButtonProps = {
   label?: string;
   handleClick?: () => void;
   variant?: string;
+  active?: boolean;
 };
 
 export const Button = (props: ButtonProps) => {
-  const { label, handleClick, variant } = props;
+  const { label, handleClick, variant, active } = props;
   return (
-    <button className={`button button--${variant}`} onClick={handleClick}>
+    <button
+      className={`button button--${variant}`}
+      onClick={handleClick}
+      disabled={active}
+    >
       {label && label}
     </button>
   );

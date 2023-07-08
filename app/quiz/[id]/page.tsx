@@ -1,5 +1,17 @@
 "use client";
+import { QuizDisplay } from "@/components/Layout";
+import { useParams } from "next/navigation";
 
+<<<<<<< HEAD
+export const Quiz = () => {
+  const params = useParams();
+  const { id } = params;
+
+  return (
+    <main>
+      <QuizDisplay id={id} />
+    </main>
+=======
 import RoutingButton from "@/components/Utils/RoutingButton";
 import { useParams } from "next/navigation";
 
@@ -15,6 +27,7 @@ export const Quiz = () => {
       {+id < 4 && <RoutingButton direction="forward" id={id} />}
       <RoutingButton direction="home" />
     </>
+>>>>>>> master
   );
 };
 
