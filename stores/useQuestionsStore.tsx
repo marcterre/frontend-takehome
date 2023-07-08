@@ -1,5 +1,9 @@
-import { LastTimeMuffinQuestion } from "@/quiz/partials/lastTimeMuffinQuestion/LastTimeMuffinQuestion";
-import { MuffinLikeabilityQuestion } from "@/quiz/partials/muffinLikeabilityQuestion/MuffinLikeabilityQuestion";
+import { FavoriteFruitQuestion } from "@/app/quiz/partials";
+import { LastTimeMuffinQuestion } from "@/app/quiz/partials";
+import { LikeToBakeQuestion } from "@/app/quiz/partials";
+import { MuffinLikeabilityQuestion } from "@/app/quiz/partials";
+import { PreferredColorQuestion } from "@/app/quiz/partials";
+import { WhyMuffinsQuestion } from "@/app/quiz/partials";
 import { create } from "zustand";
 
 type Quiz = {
@@ -33,22 +37,22 @@ const initialState = {
     {
       question: "Why do you think you should eat a muffin?",
       id: "101",
-      element: <p>Thoughts</p>,
+      element: <WhyMuffinsQuestion />,
     },
     {
-      question: "Whats your preferred color?",
+      question: "What is your preferred color?",
       id: "102",
-      element: <p>color</p>,
+      element: <PreferredColorQuestion />,
     },
     {
       question: "What is your favorite fruit?",
       id: "201",
-      element: <p>Fruit</p>,
+      element: <FavoriteFruitQuestion />,
     },
     {
       question: "Do you like to bake?",
       id: "202",
-      element: <p>bake</p>,
+      element: <LikeToBakeQuestion />,
     },
   ],
 };

@@ -1,4 +1,4 @@
-import useQuestionsStore from "stores/useQuestionsStore";
+import useQuestionsStore from "@/stores/useQuestionsStore";
 import "./TextInput.styles.css";
 
 type TextInputProps = {
@@ -33,3 +33,5 @@ export const TextInput = (props: TextInputProps) => {
     </>
   );
 };
+
+export default TextInput;

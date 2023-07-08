@@ -1,4 +1,4 @@
-import { TextInput } from "components/Input/TextInput/TextInput";
+import { TextInput } from "@/components/Inputs";
 import { useParams } from "next/navigation";
 
 export const LastTimeMuffinQuestion = () => {
@@ -7,3 +7,5 @@ export const LastTimeMuffinQuestion = () => {
 
   return <TextInput questionId={id} type="date" />;
 };
+
+export default LastTimeMuffinQuestion;

@@ -2,15 +2,10 @@
 import { QuizDisplay } from "@/components/Layout";
 import { useParams } from "next/navigation";
 
-export const Quiz = () => {
+export const Path = () => {
   const params = useParams();
-  const { id } = params;
-
-  return (
-    <main>
-      <QuizDisplay id={id} />
-    </main>
-  );
+  const { slug } = params;
+  return <QuizDisplay id={slug} />;
 };
 
-export default Quiz;
+export default Path;

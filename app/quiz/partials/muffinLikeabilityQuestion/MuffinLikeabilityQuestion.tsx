@@ -1,4 +1,4 @@
-import { TextInput } from "components/Input/TextInput/TextInput";
+import { TextInput } from "@/components/Inputs";
 import { useParams } from "next/navigation";
 
 export const MuffinLikeabilityQuestion = () => {
@@ -7,3 +7,5 @@ export const MuffinLikeabilityQuestion = () => {
 
   return <TextInput type="number" questionId={id} />;
 };
+
+export default MuffinLikeabilityQuestion;
