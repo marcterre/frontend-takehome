@@ -1,4 +1,4 @@
-import { Checkbox } from "@/components/Inputs";
+import { SelectorButton } from "@/components";
 import { useParams } from "next/navigation";
 
 export const LikeToBakeQuestion = () => {
@@ -10,5 +10,5 @@ export const LikeToBakeQuestion = () => {
     { label: "No", value: "no" },
   ];
 
-  return <Checkbox id={slug} options={options} />;
+  return <SelectorButton id={slug} optionsValue={options} />;
 };

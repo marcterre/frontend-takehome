@@ -4,15 +4,17 @@ import { Button } from "@/components/Inputs/Button/Button";
 import useQuestionsStore from "@/stores/useQuestionsStore";
 import handleQuizPath from "@/helpers/handleQuizPath";
 
-type Direction = "back" | "forward" | "home" | "start" | "path";
+type Direction = "back" | "forward" | "home" | "start" | "path" | "result";
 
 type RoutingButtonProps = {
   direction: Direction;
   id?: string;
+  type: "button" | "submit" | "reset";
+  form?: string;
 };
 
 const RoutingButton = (props: RoutingButtonProps) => {
-  const { id, direction } = props;
+  const { id, direction, type, form } = props;
   const router = useRouter();
   const pathname = usePathname();
 
@@ -44,6 +46,9 @@ const RoutingButton = (props: RoutingButtonProps) => {
       if (answerForPathDirection) return router.push(`/quiz/2/path/201`);
       if (!answerForPathDirection) return router.push(`/quiz/2/path/101`);
     }
+    if (direction === "result") {
+      return router.push(`${id}/result`);
+    }
   };
 
   const label = () => {
@@ -59,6 +64,9 @@ const RoutingButton = (props: RoutingButtonProps) => {
     if (direction === "start") {
       return "Start Quiz";
     }
+    if (direction === "result") {
+      return "See Result";
+    }
   };
 
   return (
@@ -66,6 +74,8 @@ const RoutingButton = (props: RoutingButtonProps) => {
       label={label()}
       handleClick={() => handleRouting(direction)}
       variant={label()}
+      type={type}
+      form={form}
     />
   );
 };

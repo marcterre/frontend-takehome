@@ -29,6 +29,7 @@ export const TextInput = (props: TextInputProps) => {
         type={type}
         onChange={handleChange}
         defaultValue={answer}
+        form="form"
       />
     </>
   );
