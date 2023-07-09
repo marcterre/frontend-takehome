@@ -10,12 +10,12 @@
 
   .title-wrapper {
     display: grid;
-    padding: 2rem 0 0 0;
+    padding: 1rem;
 
     .title {
-      font-family: "Rowdies";
       text-transform: uppercase;
       font-size: 6rem;
+      font-weight: 500;
     }
   }
 
@@ -23,7 +23,7 @@
     .subtitle {
       font-family: "Lobster";
       font-size: 3rem;
-      padding: 0 0 1rem 0;
+      padding: 0 0 0.5rem 0;
     }
     .image {
       width: 20rem;
@@ -31,13 +31,22 @@
       max-width: 100%;
     }
   }
+  .description {
+    padding: 0.5rem;
+  }
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
 }
 
 @media only screen and (max-width: 600px) {
   .main {
     .title-wrapper {
       .title {
-        font-size: 4rem;
+        font-size: 3.5rem;
       }
     }
     .image-wrapper {
@@ -46,8 +55,6 @@
         justify-content: center;
         .subtitle {
           font-size: 2.5rem;
-          text-align: left;
-          padding: 0 0 1.5rem 0;
         }
       }
       .image {
@@ -56,10 +63,5 @@
         max-width: 100%;
       }
     }
-  }
-  .button-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }

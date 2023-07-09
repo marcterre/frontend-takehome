@@ -1,5 +1,5 @@
 "use client";
-import { Button, SelectorButton } from "@/components";
+import { SelectorButton } from "@/components";
 import useQuestionsStore from "@/stores/useQuestionsStore";
 import { useParams } from "next/navigation";
 import { useState } from "react";
@@ -7,6 +7,9 @@ import { useState } from "react";
 export const PreferredColorQuestion = () => {
   const params = useParams();
   const { slug } = params;
+
+  const { getAnswer } = useQuestionsStore();
+  const selectedColor = getAnswer(slug);
 
   const colors = [
     { label: "Red", value: "red" },
@@ -19,10 +22,17 @@ export const PreferredColorQuestion = () => {
     { label: "White", value: "white" },
   ];
 
+  console.log("selectedColor", selectedColor);
+
   return (
-    <>
-      <SelectorButton optionsValue={colors} id={slug} />;
-    </>
+    <div className="preferred-color-wrapper">
+      <SelectorButton
+        optionsValue={colors}
+        id={slug}
+        variant="preferred-color-selectors"
+        active={selectedColor}
+      />
+    </div>
   );
 };
 

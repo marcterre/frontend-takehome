@@ -7,9 +7,9 @@ export const Quiz = () => {
   const { id } = params;
 
   return (
-    <main>
+    <>
       <QuizDisplay id={id} />
-    </main>
+    </>
   );
 };
 

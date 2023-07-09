@@ -1,16 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@400;500;700&display=swap");
+
 :root {
   --background-color: #e1e1d7;
   --color-turquoise-80: rgba(59, 176, 135, 0.8);
   --color-brown-dark: rgb(83, 58, 25);
+  --color-green-light-80: rgba(48, 160, 48, 0.8);
+  --color-red-light-80: rgba(198, 56, 56, 0.8);
+  --color-blue-light-80: rgba(84, 104, 185, 0.8);
+  --color-yellow-light-80: rgba(255, 255, 0, 0.8);
+  --color-orange-light-80: rgba(222, 164, 57, 0.8);
+  --color-purple-light-80: rgba(179, 54, 179, 0.8);
+  --color-pink-light-80: rgba(255, 192, 203, 0.8);
+  --color-grey-light-80: rgba(190, 185, 185, 0.8);
+
+  --color-white: white;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: "Rowdies", "Roboto";
+  font-weight: 200;
 }
 
 body {
   background-color: var(--background-color);
-  font-family: "Roboto", sans-serif;
 }

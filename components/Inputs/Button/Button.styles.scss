@@ -1,23 +1,91 @@
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  color: var(--color-brown-dark);
 
   &--start {
     border-radius: 5rem;
-    background-color: var(--color-turquoise-80);
     border: 6px solid var(--color-brown-dark);
-    box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
-      rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
-    color: var(--color-brown-dark);
     font-family: "Rowdies";
     padding: 0.5rem 5rem;
     font-size: 1.3rem;
+    background-color: var(--color-turquoise-80);
+  }
+  &--back,
+  &--forward,
+  &--path,
+  &--result,
+  &--home {
+    font-size: 1.2rem;
+    border-radius: 5rem;
+    border: 5px solid var(--color-brown-dark);
+    background-color: var(--color-turquoise-80);
+  }
+  &--home {
+    padding: 0.5rem 10rem;
+  }
+  &--back,
+  &--forward,
+  &--path,
+  &--result {
+    padding: 0.5rem;
+  }
+  &--like-to-bake-selectors,
+  &--preferred-color-selectors {
+    background: none;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+  }
+  &--like-to-bake-selectors-active {
+    background-color: var(--color-grey-light-80);
   }
 }
+
 @media only screen and (max-width: 600px) {
   .button {
     &--start {
       padding: 0.5rem 4rem;
       font-size: 1.1rem;
     }
+    &--back,
+    &--forward,
+    &--path,
+    &--result,
+    &--home {
+      font-size: 0.9rem;
+    }
+    &--home {
+      padding: 0.5rem 4rem;
+    }
   }
+}
+
+.red {
+  background-color: var(--color-red-light-80);
+}
+.blue {
+  background-color: var(--color-blue-light-80);
+}
+.green {
+  background-color: var(--color-green-light-80);
+}
+.yellow {
+  background-color: var(--color-yellow-light-80);
+}
+.orange {
+  background-color: var(--color-orange-light-80);
+}
+.purple {
+  background-color: var(--color-purple-light-80);
+}
+.pink {
+  background-color: var(--color-pink-light-80);
+}
+.white {
+  background-color: var(--color-grey-light-80);
 }

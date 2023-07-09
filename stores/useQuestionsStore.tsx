@@ -30,7 +30,7 @@ const initialState = {
     },
     {
       question: "How much do you like muffins?",
-      note: "Choose from 1 to 10. (1 = 'don't like them', 10 = 'love them!')",
+      note: "Choose from 0 to 10. (1 = 'don't like them', 10 = 'love them!')",
       id: "2",
       element: <MuffinLikeabilityQuestion />,
     },

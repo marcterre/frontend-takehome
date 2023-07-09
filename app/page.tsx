@@ -20,6 +20,10 @@ export const Home = () => {
           className="image"
         />
       </div>
+      <p className="description">
+        Do you struggle if you should eat this tasty little bakery? Go ahead and
+        let me help. Just click the button below!
+      </p>
       <div className="button-wrapper">
         <RoutingButton direction="start" type="button" />
       </div>

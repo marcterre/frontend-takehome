@@ -1,6 +1,8 @@
 "use client";
 import useQuestionsStore from "@/stores/useQuestionsStore";
 import handleQuizPath from "@/helpers/handleQuizPath";
+import RoutingButton from "@/components/Utils/RoutingButton/RoutingButton";
+import "./result.styles.scss";
 
 export const Result = () => {
   const { questions } = useQuestionsStore();
@@ -56,7 +58,20 @@ export const Result = () => {
 
   const resultMessage = `${getLastMuffinMessage()} ${getMuffinLikeabilityMessage()} ${getColorMessage()} ${getBakeMessage()}`;
 
-  return <div>{resultMessage}</div>;
+  return (
+    <main className="result-page-main">
+      <h1 className="result-page-main-title">Your Result:</h1>
+      {questions[0].answer ? (
+        <p className="result-page-main-message">{resultMessage}</p>
+      ) : (
+        <p className="result-page-main-message">
+          Oops! There are no answers available. If you want to know wheter you
+          should eat a muffin or not click the button below and start the quiz.
+        </p>
+      )}
+      <RoutingButton direction={"home"} type={"button"} />
+    </main>
+  );
 };
 
 export default Result;
