@@ -57,7 +57,7 @@ const initialState = {
   ],
 };
 
-const useQuestionsStore = create<QuestionsStore>((set, get) => ({
+export const useQuestionsStore = create<QuestionsStore>((set, get) => ({
   ...initialState,
 
   setAnswer: (questionId: string, answer: string) =>

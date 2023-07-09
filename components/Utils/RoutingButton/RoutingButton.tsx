@@ -1,8 +1,8 @@
 "use client";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/Inputs/Button/Button";
-import useQuestionsStore from "@/stores/useQuestionsStore";
 import handleQuizPath from "@/helpers/handleQuizPath";
+import { useQuestionsStore } from "@/stores/useQuestionsStore";
 
 type Direction = "back" | "forward" | "home" | "start" | "path" | "result";
 
@@ -62,7 +62,7 @@ const RoutingButton = (props: RoutingButtonProps) => {
       return "Home";
     }
     if (direction === "start") {
-      return "Start Quiz";
+      return "Start here to find out";
     }
     if (direction === "result") {
       return "See Result";
@@ -73,7 +73,7 @@ const RoutingButton = (props: RoutingButtonProps) => {
     <Button
       label={label()}
       handleClick={() => handleRouting(direction)}
-      variant={label()}
+      variant={direction}
       type={type}
       form={form}
     />

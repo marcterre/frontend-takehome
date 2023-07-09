@@ -1,5 +1,4 @@
-import React from "react";
-import "./Button.css";
+import "./Button.styles.scss";
 
 type ButtonProps = {
   label?: string;
