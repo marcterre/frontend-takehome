@@ -10,5 +10,14 @@ export const LikeToBakeQuestion = () => {
     { label: "No", value: "no" },
   ];
 
-  return <SelectorButton id={slug} optionsValue={options} />;
+  return (
+    <div className="like-to-bake-selectors">
+      <SelectorButton
+        id={slug}
+        optionsValue={options}
+        variant="like-to-bake-selectors"
+        active="button--like-to-bake-selectors-active"
+      />
+    </div>
+  );
 };

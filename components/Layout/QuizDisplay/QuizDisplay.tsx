@@ -1,7 +1,9 @@
-import RoutingButton from "@/components/Utils/RoutingButton/RoutingButton";
+"use client";
 import useQuestionsStore from "@/stores/useQuestionsStore";
 import { useRouter } from "next/navigation";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { ButtonNavigation } from "../ButtonNavigation";
+import "./QuizDisplay.styles.scss";
 
 type QuizDisplayProps = {
   id: string;
@@ -10,9 +12,11 @@ type QuizDisplayProps = {
 export const QuizDisplay = (props: QuizDisplayProps) => {
   const { id } = props;
 
+  const [displaySubmitMessage, setDisplaySubmitMessage] = useState(false);
+
   const router = useRouter();
 
-  const { getAnswer, getQuestion, questions } = useQuestionsStore();
+  const { getAnswer, getQuestion } = useQuestionsStore();
   const answer = getAnswer(id);
   const currentQuestion = getQuestion(id);
   const { question, note, element } = currentQuestion
@@ -29,31 +33,30 @@ export const QuizDisplay = (props: QuizDisplayProps) => {
     console.log(form);
   };
 
-  const currentIndex = questions.findIndex((q) => q.id === id);
-  const isLastQuestion = currentIndex === questions.length - 1;
-  const isSubmitPage = id === "202" || id === "102";
-
-  const NextQuestionButton =
-    !isLastQuestion && !isSubmitPage ? (
-      <RoutingButton type="button" direction="forward" id={id} />
-    ) : (
-      <RoutingButton type="submit" direction="result" id={id} form="form" />
-    );
-
   return (
-    <form ref={formRef} onSubmit={handleSubmit} id="form">
-      <h1>{question}</h1>
-      <p>{note}</p>
-      <div>{element}</div>
-      <div>{answer}</div>
-      <RoutingButton type="button" direction="back" />
-      {id === "2" ? (
-        <RoutingButton type="button" direction="path" />
-      ) : (
-        NextQuestionButton
+    <main className="quiz-display-main">
+      <div className="question-wrapper">
+        <h1 className="question">{question}</h1>
+        {note && <p className="question-note">{note}</p>}
+      </div>
+      <form className="form" onSubmit={handleSubmit} id="form">
+        <div className="question-element">
+          {!answer && <p className="enter-answer-message">Enter your answer</p>}
+          {element}
+        </div>
+      </form>
+      {displaySubmitMessage && (
+        <div className="question-submit-message-wrapper">
+          <p className="question-submit-message">
+            Your submitted answer is: {answer}
+          </p>
+        </div>
       )}
-      <RoutingButton type="button" direction="home" />
-    </form>
+      <ButtonNavigation
+        handleClick={() => setDisplaySubmitMessage(!displaySubmitMessage)}
+        id={id}
+      />
+    </main>
   );
 };
 

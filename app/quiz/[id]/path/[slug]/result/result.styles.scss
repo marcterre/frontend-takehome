@@ -1,0 +1,16 @@
+.result-page-main {
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  &-title {
+    font-size: 3rem;
+    text-align: center;
+  }
+  &-message {
+    align-self: flex-start;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}

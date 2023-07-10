@@ -19,6 +19,7 @@ type QuestionsStore = {
   setAnswer: (questionId: string, answer: string) => void;
   getAnswer: (questionId: string) => string | undefined;
   getQuestion: (questionId: string) => Quiz | undefined;
+  removeAnswer: () => void;
 };
 
 const initialState = {
@@ -30,7 +31,7 @@ const initialState = {
     },
     {
       question: "How much do you like muffins?",
-      note: "Choose from 1 to 10. (1 = 'don't like them', 10 = 'love them!')",
+      note: "Choose from 0 to 10. (1 = 'don't like them', 10 = 'love them!')",
       id: "2",
       element: <MuffinLikeabilityQuestion />,
     },
@@ -57,7 +58,7 @@ const initialState = {
   ],
 };
 
-const useQuestionsStore = create<QuestionsStore>((set, get) => ({
+export const useQuestionsStore = create<QuestionsStore>((set, get) => ({
   ...initialState,
 
   setAnswer: (questionId: string, answer: string) =>
@@ -80,6 +81,13 @@ const useQuestionsStore = create<QuestionsStore>((set, get) => ({
     );
     return question;
   },
+  removeAnswer: () =>
+    set((state) => ({
+      questions: state.questions.map((question) => ({
+        ...question,
+        answer: "",
+      })),
+    })),
 }));
 
 export default useQuestionsStore;

@@ -6,16 +6,19 @@ import { useState } from "react";
 type SelectorButtonProps = {
   optionsValue: { label: string; value: string }[];
   id: string;
+  variant?: string;
+  active?: string;
+  style?: React.CSSProperties;
 };
 
 export const SelectorButton = (props: SelectorButtonProps) => {
-  const { optionsValue, id } = props;
+  const { optionsValue, id, variant, active } = props;
   const [selectedValue, setSelectedValue] = useState("");
   const { setAnswer } = useQuestionsStore();
 
-  const handleColorSelection = (color: string) => {
-    setSelectedValue(color);
-    setAnswer(id, color);
+  const handleColorSelection = (value: string) => {
+    setSelectedValue(value);
+    setAnswer(id, value);
   };
   return (
     <>
@@ -26,8 +29,9 @@ export const SelectorButton = (props: SelectorButtonProps) => {
             key={index}
             label={label}
             handleClick={() => handleColorSelection(value)}
-            active={value === selectedValue}
+            disabled={value === selectedValue}
             type="button"
+            variant={`${variant} ${value === selectedValue ? active : ""}`}
           />
         );
       })}

@@ -1,5 +1,5 @@
 import useQuestionsStore from "@/stores/useQuestionsStore";
-import "./TextInput.styles.css";
+import "./TextInput.styles.scss";
 
 type TextInputProps = {
   type: string;
@@ -7,10 +7,12 @@ type TextInputProps = {
   value?: string;
   variant?: string;
   questionId: string;
+  max?: string | number;
+  min?: string | number;
 };
 
 export const TextInput = (props: TextInputProps) => {
-  const { type, label, variant, questionId } = props;
+  const { type, label, variant, questionId, max, min } = props;
 
   const { setAnswer, getAnswer } = useQuestionsStore();
   const answer = getAnswer(questionId);
@@ -23,13 +25,18 @@ export const TextInput = (props: TextInputProps) => {
 
   return (
     <>
-      <label className={`label label--${variant}`}>{label && label}</label>
+      <label htmlFor={label} className={`label label--${variant}`}></label>
       <input
         className={`input input--${variant}`}
         type={type}
         onChange={handleChange}
         defaultValue={answer}
         form="form"
+        max={max}
+        min={min}
+        required={true}
+        id={label}
+        name={label}
       />
     </>
   );

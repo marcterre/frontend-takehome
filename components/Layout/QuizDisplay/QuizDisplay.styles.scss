@@ -1,0 +1,102 @@
+.quiz-display-main {
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  .question-wrapper {
+    display: grid;
+    justify-items: center;
+    .question {
+      margin: 0;
+      text-align: center;
+      font-size: 3rem;
+      align-self: start;
+      &-note {
+        text-align: center;
+        align-self: start;
+      }
+    }
+  }
+  .form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    text-align: center;
+    background-color: var(--color-white);
+    border-radius: 10px;
+    margin: 0 2rem;
+    padding: 2rem;
+
+    .question-element {
+      .enter-answer-message {
+        font-size: 1.2rem;
+        padding-bottom: 1rem;
+      }
+      .like-to-bake-selectors {
+        display: flex;
+        gap: 3rem;
+      }
+      .preferred-color-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+    }
+  }
+  .question-submit-message-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 18vh;
+    .question-submit-message {
+      border-radius: 10px;
+      opacity: 60%;
+      background-color: var(--color-green-light-80);
+      padding: 1rem;
+      &-not {
+        animation: hideText 2s linear forwards;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .quiz-display-main {
+    .question-wrapper {
+      .question {
+        font-size: 2.7rem;
+        padding: 0 0.5rem;
+        &-note {
+          width: 70%;
+        }
+      }
+    }
+    .form {
+      align-self: start;
+      height: fit-content;
+      background-color: white;
+      border-radius: 10px;
+      padding: 2rem;
+      .question-element {
+        .preferred-color-wrapper {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@keyframes hideText {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
