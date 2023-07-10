@@ -1,3 +1,4 @@
+"use client";
 import useQuestionsStore from "@/stores/useQuestionsStore";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
@@ -17,7 +18,6 @@ export const QuizDisplay = (props: QuizDisplayProps) => {
 
   const { getAnswer, getQuestion } = useQuestionsStore();
   const answer = getAnswer(id);
-  console.log(id);
   const currentQuestion = getQuestion(id);
   const { question, note, element } = currentQuestion
     ? currentQuestion
@@ -33,14 +33,13 @@ export const QuizDisplay = (props: QuizDisplayProps) => {
     console.log(form);
   };
 
-  console.log(answer);
   return (
     <main className="quiz-display-main">
       <div className="question-wrapper">
         <h1 className="question">{question}</h1>
         {note && <p className="question-note">{note}</p>}
       </div>
-      <form ref={formRef} className="form" onSubmit={handleSubmit} id="form">
+      <form className="form" onSubmit={handleSubmit} id="form">
         <div className="question-element">
           {!answer && <p className="enter-answer-message">Enter your answer</p>}
           {element}

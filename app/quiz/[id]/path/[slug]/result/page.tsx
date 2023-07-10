@@ -1,6 +1,8 @@
 "use client";
 import useQuestionsStore from "@/stores/useQuestionsStore";
 import handleQuizPath from "@/helpers/handleQuizPath";
+import isDateWithin30Days from "@/helpers/isDateWithin30Days";
+import formatDate from "@/helpers/formatDate";
 import RoutingButton from "@/components/Utils/RoutingButton/RoutingButton";
 import "./result.styles.scss";
 
@@ -12,11 +14,15 @@ export const Result = () => {
     const numberAnswer = questions[2].answer;
 
     const lastMuffinDate = questions[0].answer;
+    const lastMuffinDateFormatted = formatDate(questions[0].answer, "german");
 
-    if (handleQuizPath(dateAnswer, numberAnswer)) {
-      return `Seems like you ate a Muffin on ${lastMuffinDate}, this was like yesterday!`;
+    if (
+      !handleQuizPath(dateAnswer, numberAnswer) &&
+      isDateWithin30Days(lastMuffinDate)
+    ) {
+      return `Seems like you ate a Muffin on ${lastMuffinDateFormatted}, this was like yesterday!`;
     } else {
-      return `Seems like you ate a Muffin on ${lastMuffinDate}, that's a really long time ago!`;
+      return `Seems like you ate a Muffin on ${lastMuffinDateFormatted}, that's a really long time ago!`;
     }
   };
 
@@ -26,9 +32,9 @@ export const Result = () => {
     if (muffinLikeability > 5) {
       return "So you like muffins. Good for you!";
     } else {
-      const reason = questions[2].answer
-        ? `I understand that you said "${questions[2].answer}"`
-        : "";
+      const reason =
+        questions[2].answer &&
+        `I understand that you said "${questions[2].answer}".`;
       return `So you don't like muffins... My bad. ${reason}`;
     }
   };

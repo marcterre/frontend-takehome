@@ -24,7 +24,7 @@ const RoutingButton = (props: RoutingButtonProps) => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const { getAnswer } = useQuestionsStore();
+  const { getAnswer, removeAnswer } = useQuestionsStore();
 
   const answer = getAnswer(id ? id : "");
 
@@ -67,6 +67,7 @@ const RoutingButton = (props: RoutingButtonProps) => {
       return router.back();
     }
     if (direction === "home") {
+      removeAnswer();
       return router.push("/");
     }
     if (direction === "start") {

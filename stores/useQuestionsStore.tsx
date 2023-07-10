@@ -19,6 +19,7 @@ type QuestionsStore = {
   setAnswer: (questionId: string, answer: string) => void;
   getAnswer: (questionId: string) => string | undefined;
   getQuestion: (questionId: string) => Quiz | undefined;
+  removeAnswer: () => void;
 };
 
 const initialState = {
@@ -80,6 +81,13 @@ export const useQuestionsStore = create<QuestionsStore>((set, get) => ({
     );
     return question;
   },
+  removeAnswer: () =>
+    set((state) => ({
+      questions: state.questions.map((question) => ({
+        ...question,
+        answer: "",
+      })),
+    })),
 }));
 
 export default useQuestionsStore;

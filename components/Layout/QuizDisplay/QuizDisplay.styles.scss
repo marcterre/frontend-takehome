@@ -6,7 +6,6 @@
   .question-wrapper {
     display: grid;
     justify-items: center;
-
     .question {
       margin: 0;
       text-align: center;
@@ -65,22 +64,23 @@
 }
 
 @media (max-width: 600px) {
-  .quiz-dispay-main {
+  .quiz-display-main {
     .question-wrapper {
       .question {
-        font-size: 1.5rem;
+        font-size: 2.7rem;
+        padding: 0 0.5rem;
         &-note {
           width: 70%;
         }
       }
     }
     .form {
+      align-self: start;
       height: fit-content;
       background-color: white;
       border-radius: 10px;
       padding: 2rem;
       .question-element {
-        background-color: red;
         .preferred-color-wrapper {
           display: grid;
           grid-template-columns: repeat(2, 1fr);

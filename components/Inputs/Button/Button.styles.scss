@@ -22,11 +22,12 @@
   &--home {
     font-size: 1.2rem;
     border-radius: 5rem;
-    border: 3px solid var(--color-brown-dark);
+    border: 3.5px solid var(--color-brown-dark);
     background-color: var(--color-turquoise-80);
   }
   &--home {
-    padding: 0.5rem 10rem;
+    align-self: flex-end;
+    padding: 0.5rem 8rem;
   }
   &--back,
   &--forward,
@@ -60,7 +61,7 @@
       font-size: 0.9rem;
     }
     &--home {
-      padding: 0.5rem 4rem;
+      padding: 0.7rem 4rem;
     }
   }
 }

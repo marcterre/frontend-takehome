@@ -34,7 +34,7 @@ export const TextInput = (props: TextInputProps) => {
         form="form"
         max={max}
         min={min}
-        required
+        required={true}
         id={label}
         name={label}
       />
