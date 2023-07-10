@@ -22,7 +22,7 @@
   &--home {
     font-size: 1.2rem;
     border-radius: 5rem;
-    border: 5px solid var(--color-brown-dark);
+    border: 3px solid var(--color-brown-dark);
     background-color: var(--color-turquoise-80);
   }
   &--home {
@@ -46,7 +46,7 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
   .button {
     &--start {
       padding: 0.5rem 4rem;

@@ -22,8 +22,6 @@ export const PreferredColorQuestion = () => {
     { label: "White", value: "white" },
   ];
 
-  console.log("selectedColor", selectedColor);
-
   return (
     <div className="preferred-color-wrapper">
       <SelectorButton

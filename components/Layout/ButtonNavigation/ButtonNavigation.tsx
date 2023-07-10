@@ -5,11 +5,13 @@ import "./ButtonNavigation.styles.scss";
 type FooterProps = {
   id: string;
   handleClick?: () => void;
+  disabled?: boolean;
 };
 
 export const ButtonNavigation = (props: FooterProps) => {
-  const { id, handleClick } = props;
-  const { questions } = useQuestionsStore();
+  const { id, handleClick, disabled } = props;
+  const { questions, getAnswer } = useQuestionsStore();
+  const answer = getAnswer(id);
   const currentIndex = questions.findIndex((q) => q.id === id);
   const isLastQuestion = currentIndex === questions.length - 1;
   const isSubmitPage = id === "202" || id === "102";
@@ -21,6 +23,7 @@ export const ButtonNavigation = (props: FooterProps) => {
         direction="forward"
         id={id}
         handleClick={handleClick}
+        disabled={!answer}
       />
     ) : (
       <RoutingButton
@@ -28,7 +31,8 @@ export const ButtonNavigation = (props: FooterProps) => {
         direction="result"
         id={id}
         form="form"
-        handleClick={() => handleClick}
+        handleClick={handleClick}
+        disabled={!answer}
       />
     );
 
@@ -37,7 +41,12 @@ export const ButtonNavigation = (props: FooterProps) => {
       <RoutingButton type="button" direction="back" />
       <RoutingButton type="button" direction="home" />
       {id === "2" ? (
-        <RoutingButton type="button" direction="path" />
+        <RoutingButton
+          type="button"
+          direction="path"
+          handleClick={handleClick}
+          disabled={!answer}
+        />
       ) : (
         NextQuestionButton
       )}

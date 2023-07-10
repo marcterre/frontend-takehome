@@ -36,8 +36,31 @@ export const Result = () => {
   const getColorMessage = () => {
     const favoriteColor = questions[3].answer;
 
+    const choosenFavoriteColor = () => {
+      switch (favoriteColor) {
+        case "red":
+          return "Apples";
+        case "green":
+          return "Kiwis";
+        case "blue":
+          return "Blueberries";
+        case "yellow":
+          return "Bananas";
+        case "orange":
+          return "Oranges";
+        case "purple":
+          return "Plums";
+        case "pink":
+          return "Raspberries";
+        default:
+          return "";
+      }
+    };
+
+    console.log(choosenFavoriteColor());
+
     if (favoriteColor) {
-      return `But I see your favorite color is ${favoriteColor}, why don't you consider eating?`;
+      return `But I see your favorite color is ${favoriteColor}, why don't you consider eating ${choosenFavoriteColor()}?`;
     } else {
       return "";
     }

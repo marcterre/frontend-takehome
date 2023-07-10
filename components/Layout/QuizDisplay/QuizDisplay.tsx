@@ -17,6 +17,7 @@ export const QuizDisplay = (props: QuizDisplayProps) => {
 
   const { getAnswer, getQuestion } = useQuestionsStore();
   const answer = getAnswer(id);
+  console.log(id);
   const currentQuestion = getQuestion(id);
   const { question, note, element } = currentQuestion
     ? currentQuestion
@@ -32,6 +33,7 @@ export const QuizDisplay = (props: QuizDisplayProps) => {
     console.log(form);
   };
 
+  console.log(answer);
   return (
     <main className="quiz-display-main">
       <div className="question-wrapper">
@@ -39,7 +41,10 @@ export const QuizDisplay = (props: QuizDisplayProps) => {
         {note && <p className="question-note">{note}</p>}
       </div>
       <form ref={formRef} className="form" onSubmit={handleSubmit} id="form">
-        <div className="question-element">{element}</div>
+        <div className="question-element">
+          {!answer && <p className="enter-answer-message">Enter your answer</p>}
+          {element}
+        </div>
       </form>
       {displaySubmitMessage && (
         <div className="question-submit-message-wrapper">

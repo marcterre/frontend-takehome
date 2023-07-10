@@ -16,14 +16,17 @@ type RoutingButtonProps = {
   form?: string;
   style?: React.CSSProperties;
   handleClick?: () => void;
+  disabled?: boolean;
 };
 
 const RoutingButton = (props: RoutingButtonProps) => {
-  const { id, direction, type, form, style, handleClick } = props;
+  const { id, direction, type, form, style, handleClick, disabled } = props;
   const router = useRouter();
   const pathname = usePathname();
 
   const { getAnswer } = useQuestionsStore();
+
+  const answer = getAnswer(id ? id : "");
 
   const dateAnswer = getAnswer("1");
   const numberAnswer = getAnswer("2");
@@ -70,11 +73,17 @@ const RoutingButton = (props: RoutingButtonProps) => {
       return router.push("/quiz/1");
     }
     if (direction === "path") {
-      if (answerForPathDirection) return router.push(`/quiz/2/path/201`);
-      if (!answerForPathDirection) return router.push(`/quiz/2/path/101`);
+      handleClick && handleClick();
+      setTimeout(() => {
+        if (answerForPathDirection) return router.push(`/quiz/2/path/201`);
+        if (!answerForPathDirection) return router.push(`/quiz/2/path/101`);
+      }, 500);
     }
-    if (direction === "result") {
-      return router.push(`${id}/result`);
+    if (direction === "result" && answer) {
+      handleClick && handleClick();
+      setTimeout(() => {
+        return router.push(`${id}/result`);
+      }, 500);
     }
   };
 
@@ -106,6 +115,7 @@ const RoutingButton = (props: RoutingButtonProps) => {
       type={type}
       form={form}
       style={style}
+      disabled={disabled}
     />
   );
 };

@@ -3,6 +3,7 @@ import "./page.styles.scss";
 import Image from "next/image";
 
 export const Home = () => {
+  const muffinImage = "/../public/muffin.png";
   return (
     <main className="main">
       <div className="title-wrapper">
@@ -13,7 +14,8 @@ export const Home = () => {
           <h2 className="subtitle">To eat or not to eat?</h2>
         </div>
         <Image
-          src="/../public/muffin.png"
+          priority
+          src={muffinImage}
           alt="muffin"
           width={100}
           height={100}

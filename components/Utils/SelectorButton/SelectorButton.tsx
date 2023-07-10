@@ -29,7 +29,7 @@ export const SelectorButton = (props: SelectorButtonProps) => {
             key={index}
             label={label}
             handleClick={() => handleColorSelection(value)}
-            active={value === selectedValue}
+            disabled={value === selectedValue}
             type="button"
             variant={`${variant} ${value === selectedValue ? active : ""}`}
           />

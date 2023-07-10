@@ -25,7 +25,7 @@ export const TextInput = (props: TextInputProps) => {
 
   return (
     <>
-      <label className={`label label--${variant}`}>{label && label}</label>
+      <label htmlFor={label} className={`label label--${variant}`}></label>
       <input
         className={`input input--${variant}`}
         type={type}
@@ -34,6 +34,9 @@ export const TextInput = (props: TextInputProps) => {
         form="form"
         max={max}
         min={min}
+        required
+        id={label}
+        name={label}
       />
     </>
   );

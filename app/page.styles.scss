@@ -10,7 +10,7 @@
 
   .title-wrapper {
     display: grid;
-    padding: 1rem;
+    padding: 1rem 0;
 
     .title {
       text-transform: uppercase;
@@ -38,11 +38,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 1rem 0;
+    margin: 0;
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
   .main {
     .title-wrapper {
       .title {
