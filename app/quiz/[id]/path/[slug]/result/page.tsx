@@ -6,7 +6,7 @@ import useQuestionsStore from "@/stores/useQuestionsStore";
 import axios from "axios";
 import "./result.styles.scss";
 
-export const Result = () => {
+const Result = () => {
   const { questions } = useQuestionsStore();
 
   const getLastMuffinMessage = () => {

@@ -2,7 +2,7 @@
 import { QuizDisplay } from "@/components";
 import { useParams } from "next/navigation";
 
-export const Quiz = () => {
+const Quiz = () => {
   const params = useParams();
   const { id } = params;
 
