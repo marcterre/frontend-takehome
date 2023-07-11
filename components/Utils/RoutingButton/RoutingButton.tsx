@@ -1,11 +1,12 @@
 "use client";
 import { usePathname, useRouter } from "next/navigation";
-import { Button } from "@/components/Inputs/Button/Button";
-import handleQuizPath from "@/helpers/handleQuizPath";
 import { useQuestionsStore } from "@/stores/useQuestionsStore";
+import { Button } from "@/components";
+import handleQuizPath from "@/helpers/handleQuizPath";
 import IconBack from "../../../public/arrow-back.svg";
 import IconForward from "../../../public/arrow-right.svg";
 import Image from "next/image";
+import axios from "axios";
 
 type Direction = "back" | "forward" | "home" | "start" | "path" | "result";
 
@@ -19,19 +20,45 @@ type RoutingButtonProps = {
   disabled?: boolean;
 };
 
-const RoutingButton = (props: RoutingButtonProps) => {
+export const RoutingButton = (props: RoutingButtonProps) => {
   const { id, direction, type, form, style, handleClick, disabled } = props;
   const router = useRouter();
   const pathname = usePathname();
 
-  const { getAnswer, removeAnswer } = useQuestionsStore();
+  const { getAnswer, questions, removeStoredAnswer } = useQuestionsStore();
 
-  const answer = getAnswer(id ? id : "");
+  const answer = getAnswer(id || "");
 
   const dateAnswer = getAnswer("1");
   const numberAnswer = getAnswer("2");
 
   const answerForPathDirection = handleQuizPath(dateAnswer, numberAnswer);
+
+  const removeResult = () => {
+    axios
+      .patch(`http://localhost:3030/result`, {
+        message: null,
+        id: null,
+      })
+      .catch((error) => {
+        console.log(`Error deleting result for questions: `, error);
+      });
+  };
+
+  const removeAllAnswers = () => {
+    questions.map((question) =>
+      axios
+        .patch(`http://localhost:3030/questions/${question.id}`, {
+          answer: null,
+        })
+        .catch((error) => {
+          console.log(
+            `Error deleting answer for question ${question.id}:`,
+            error
+          );
+        })
+    );
+  };
 
   const backArrow = (
     <Image
@@ -67,7 +94,9 @@ const RoutingButton = (props: RoutingButtonProps) => {
       return router.back();
     }
     if (direction === "home") {
-      removeAnswer();
+      removeResult();
+      removeAllAnswers();
+      removeStoredAnswer();
       return router.push("/");
     }
     if (direction === "start") {

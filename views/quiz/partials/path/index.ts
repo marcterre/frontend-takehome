@@ -1,2 +1,2 @@
-export * from "./answerForPathDirectionIsFalse";
-export * from "./answerForPathDirectonIsTrue";
+export * from "./likeToBakeQuestion";
+export * from "./preferredColorQuestion";

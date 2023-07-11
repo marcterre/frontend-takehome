@@ -1,0 +1,42 @@
+{
+  "questions": [
+    {
+      "question": "When was the last time you ate a muffin?",
+      "type": "date",
+      "id": "1",
+      "answer": null
+    },
+    {
+      "question": "How much do you like muffins?",
+      "type": "number",
+      "id": "2",
+      "answer": null
+    },
+    {
+      "question": "Why do you think you should eat a muffin?",
+      "type": "text",
+      "id": "101",
+      "answer": null
+    },
+    {
+      "question": "What is your preferred color?",
+      "id": "102",
+      "answer": null
+    },
+    {
+      "question": "What is your favorite fruit?",
+      "type": "text",
+      "id": "201",
+      "answer": null
+    },
+    {
+      "question": "Do you like to bake?",
+      "id": "202",
+      "answer": null
+    }
+  ],
+  "result": {
+    "message": null,
+    "id": null
+  }
+}
