@@ -111,6 +111,7 @@ export const Result = () => {
 
   useEffect(() => {
     pushResult();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -2,7 +2,7 @@ import { RoutingButton } from "@/components/Utils/RoutingButton";
 import "./page.styles.scss";
 import Image from "next/image";
 
-export const Home = () => {
+const Home = () => {
   const muffinImage = "/../public/muffin.png";
   return (
     <main className="main">

@@ -60,6 +60,7 @@ export const QuizDisplay = (props: QuizDisplayProps) => {
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleAnswer = () => {
