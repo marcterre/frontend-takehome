@@ -30,18 +30,31 @@ export const QuizDisplay = (props: QuizDisplayProps) => {
     switch (id) {
       case "1":
         return (
-          <TextInput type={type} label={id} questionId={id} max={maxDate} />
+          <TextInput
+            type={type}
+            label={id}
+            questionId={id}
+            max={maxDate}
+            pattern="^[a-zA-Z0-9\s]*$"
+          />
         );
       case "2":
         return (
           <TextInput type={type} label={id} questionId={id} min={0} max={10} />
         );
       case "101":
-        return <TextInput type={type} questionId={id} />;
+        return <TextInput type={type} questionId={id} maxLength={30} />;
       case "102":
         return <PreferredColorQuestion />;
       case "201":
-        return <TextInput type={type} questionId={id} />;
+        return (
+          <TextInput
+            type={type}
+            questionId={id}
+            maxLength={15}
+            pattern="^[a-zA-Z0-9\s]*$"
+          />
+        );
       case "202":
         return <LikeToBakeQuestion />;
     }

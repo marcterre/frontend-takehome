@@ -9,10 +9,13 @@ type TextInputProps = {
   questionId: string;
   max?: string | number;
   min?: string | number;
+  maxLength?: number;
+  pattern?: string;
 };
 
 export const TextInput = (props: TextInputProps) => {
-  const { type, label, variant, questionId, max, min } = props;
+  const { type, label, variant, questionId, max, min, maxLength, pattern } =
+    props;
 
   const { setAnswer, getAnswer } = useQuestionsStore();
   const answer = getAnswer(questionId);
@@ -37,6 +40,8 @@ export const TextInput = (props: TextInputProps) => {
         required={true}
         id={label}
         name={label}
+        maxLength={maxLength}
+        pattern={pattern}
       />
     </>
   );
