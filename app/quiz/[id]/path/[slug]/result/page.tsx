@@ -1,9 +1,9 @@
 "use client";
+import { handleQuizPath, isDateWithin30Days, formatDate } from "@/helpers";
+import { RoutingButton } from "@/components/Utils/RoutingButton";
+import { useEffect } from "react";
 import useQuestionsStore from "@/stores/useQuestionsStore";
-import handleQuizPath from "@/helpers/handleQuizPath";
-import isDateWithin30Days from "@/helpers/isDateWithin30Days";
-import formatDate from "@/helpers/formatDate";
-import RoutingButton from "@/components/Utils/RoutingButton/RoutingButton";
+import axios from "axios";
 import "./result.styles.scss";
 
 export const Result = () => {
@@ -17,7 +17,7 @@ export const Result = () => {
     const lastMuffinDateFormatted = formatDate(questions[0].answer, "german");
 
     if (
-      !handleQuizPath(dateAnswer, numberAnswer) &&
+      handleQuizPath(dateAnswer, numberAnswer) &&
       isDateWithin30Days(lastMuffinDate)
     ) {
       return `Seems like you ate a Muffin on ${lastMuffinDateFormatted}, this was like yesterday!`;
@@ -86,6 +86,32 @@ export const Result = () => {
   };
 
   const resultMessage = `${getLastMuffinMessage()} ${getMuffinLikeabilityMessage()} ${getColorMessage()} ${getBakeMessage()}`;
+
+  const pushResult = () => {
+    axios
+      .put(
+        `http://localhost:3030/result`,
+        {
+          message: resultMessage,
+          id: "300",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    pushResult();
+  }, []);
 
   return (
     <main className="result-page-main">

@@ -1,5 +1,5 @@
-import { SelectorButton } from "@/components";
 import { useParams } from "next/navigation";
+import { SelectorButton } from "@/components/Utils/SelectorButton";
 
 export const LikeToBakeQuestion = () => {
   const params = useParams();
@@ -21,3 +21,5 @@ export const LikeToBakeQuestion = () => {
     </div>
   );
 };
+
+export default LikeToBakeQuestion;

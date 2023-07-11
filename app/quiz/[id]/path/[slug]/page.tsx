@@ -1,5 +1,5 @@
 "use client";
-import { QuizDisplay } from "@/components/Layout";
+import { QuizDisplay } from "@/components";
 import { useParams } from "next/navigation";
 
 export const Path = () => {

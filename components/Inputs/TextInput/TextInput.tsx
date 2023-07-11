@@ -2,7 +2,7 @@ import useQuestionsStore from "@/stores/useQuestionsStore";
 import "./TextInput.styles.scss";
 
 type TextInputProps = {
-  type: string;
+  type?: string;
   label?: string;
   value?: string;
   variant?: string;

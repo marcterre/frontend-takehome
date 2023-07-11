@@ -1,4 +1,4 @@
-import RoutingButton from "@/components/Utils/RoutingButton/RoutingButton";
+import { RoutingButton } from "@/components/Utils/RoutingButton";
 import "./page.styles.scss";
 import Image from "next/image";
 

@@ -1,8 +1,7 @@
 "use client";
-import { SelectorButton } from "@/components";
+import { SelectorButton } from "@/components/Utils/SelectorButton";
 import useQuestionsStore from "@/stores/useQuestionsStore";
 import { useParams } from "next/navigation";
-import { useState } from "react";
 
 export const PreferredColorQuestion = () => {
   const params = useParams();

@@ -1,8 +1,13 @@
 "use client";
+import { useEffect, useState } from "react";
+import { ButtonNavigation } from "@/components";
+import { TextInput } from "@/components";
+import {
+  LikeToBakeQuestion,
+  PreferredColorQuestion,
+} from "@/views/quiz/partials";
 import useQuestionsStore from "@/stores/useQuestionsStore";
-import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
-import { ButtonNavigation } from "../ButtonNavigation";
+import axios from "axios";
 import "./QuizDisplay.styles.scss";
 
 type QuizDisplayProps = {
@@ -14,23 +19,78 @@ export const QuizDisplay = (props: QuizDisplayProps) => {
 
   const [displaySubmitMessage, setDisplaySubmitMessage] = useState(false);
 
-  const router = useRouter();
+  const maxDate = new Date().toISOString().split("T")[0];
 
-  const { getAnswer, getQuestion } = useQuestionsStore();
+  const { getAnswer, getQuestion, setQuestions } = useQuestionsStore();
   const answer = getAnswer(id);
   const currentQuestion = getQuestion(id);
-  const { question, note, element } = currentQuestion
-    ? currentQuestion
-    : { question: "", note: "", element: "" };
+  const { question, note, type } = currentQuestion || {};
 
-  const formRef = useRef<HTMLFormElement>(null);
+  const element = () => {
+    switch (id) {
+      case "1":
+        return (
+          <TextInput type={type} label={id} questionId={id} max={maxDate} />
+        );
+      case "2":
+        return (
+          <TextInput type={type} label={id} questionId={id} min={0} max={10} />
+        );
+      case "101":
+        return <TextInput type={type} questionId={id} />;
+      case "102":
+        return <PreferredColorQuestion />;
+      case "201":
+        return <TextInput type={type} questionId={id} />;
+      case "202":
+        return <LikeToBakeQuestion />;
+    }
+  };
+
+  const getData = () => {
+    axios
+      .get("http://localhost:3030/questions")
+      .then((response) => {
+        const result = response.data;
+        console.log(result);
+        setQuestions(result);
+      })
+      .catch((error) => console.log("error", error));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const handleAnswer = () => {
+    setDisplaySubmitMessage(!displaySubmitMessage);
+
+    axios
+      .put(
+        `http://localhost:3030/questions/${id}`,
+        {
+          question,
+          type,
+          id,
+          answer: answer,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // router.push(`${id}/result`);
-
-    const form = formRef.current;
-    console.log(form);
+    handleAnswer();
   };
 
   return (
@@ -39,10 +99,10 @@ export const QuizDisplay = (props: QuizDisplayProps) => {
         <h1 className="question">{question}</h1>
         {note && <p className="question-note">{note}</p>}
       </div>
-      <form className="form" onSubmit={handleSubmit} id="form">
+      <form className="form" id="form" onSubmit={(e) => handleSubmit(e)}>
         <div className="question-element">
           {!answer && <p className="enter-answer-message">Enter your answer</p>}
-          {element}
+          {element()}
         </div>
       </form>
       {displaySubmitMessage && (
@@ -52,10 +112,7 @@ export const QuizDisplay = (props: QuizDisplayProps) => {
           </p>
         </div>
       )}
-      <ButtonNavigation
-        handleClick={() => setDisplaySubmitMessage(!displaySubmitMessage)}
-        id={id}
-      />
+      <ButtonNavigation handleClick={() => handleAnswer()} id={id} />
     </main>
   );
 };
