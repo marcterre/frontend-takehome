@@ -14,7 +14,7 @@ To see questions endpoint:
 
 - go to http://localhost:3030/questions
 
-To see the result after complecting the quiz:
+To see the result after completing the quiz:
 
 - go to http://localhost:3030/result
 
